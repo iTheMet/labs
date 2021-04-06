@@ -1,17 +1,1 @@
-<<<<<<< Updated upstream
-1234
 
-
-
-Можно войти?
-<<<<<<< Updated upstream
-=======
-123456
-
-456
->>>>>>> Stashed changes
-=======
-
-
-ты блять кто? иди домой 
->>>>>>> Stashed changes
