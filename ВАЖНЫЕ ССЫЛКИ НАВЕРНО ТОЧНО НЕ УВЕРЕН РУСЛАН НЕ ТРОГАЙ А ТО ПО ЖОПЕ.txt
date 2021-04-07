@@ -1,3 +1,5 @@
 https://javarush.ru/groups/posts/366-top-10-bibliotek-java-kotorihe-pomogut-sehkonomitjh-vremja-
 
 https://habr.com/ru/sandbox/64660/
+
+https://xakep.ru/2014/09/10/java-gui/
