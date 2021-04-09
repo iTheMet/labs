@@ -21,5 +21,7 @@ public class Main extends Application {
         launch(args);
     }
 
-    //руслан ничего не трогай пажалучта
+    //Саня те надо через меню file/project structure устанвоить путь к sdk javafx в пункте librares
+    // а так же путь к jdk15.0.2 в пункте SDKs
+    // он у тебя гдет должен быть а если небудет то там есть пункт install во
 }
