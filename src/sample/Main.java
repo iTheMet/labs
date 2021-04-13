@@ -6,21 +6,21 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Main extends Application {
-
+public class Main /*extends Application*/ {
+//ебать насрано - Даня
 
 
 
 
     public static void main(String[] args) {
-	   // println(cap_Invest)
+	    println(cap_Invest)
 	}
 
 
 
 
 
-	@Override
+	/**@Override
     public void cap_Invest(Stage primaryStage) throws Exception//Капитальные вложения, связанные с автоматизацией обработки информации
     {
       int cI ;
@@ -28,7 +28,7 @@ public class Main extends Application {
       return ci;
     	}
     
-    public void design_Invest/*капитальные вложения на проектирование*/
+   /** public void design_Invest/*капитальные вложения на проектирование*/
     {
     	float dI;
     	float Wd = 0,4; //коэффициент, учитывающий дополнительную заработную плату в долях к основной заработной плате
@@ -57,4 +57,5 @@ public class Main extends Application {
     // Р° С‚Р°Рє Р¶Рµ РїСѓС‚СЊ Рє jdk15.0.2 РІ РїСѓРЅРєС‚Рµ SDKs
     // РѕРЅ Сѓ С‚РµР±СЏ РіРґРµС‚ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ Р° РµСЃР»Рё РЅРµР±СѓРґРµС‚ С‚Рѕ С‚Р°Рј РµСЃС‚СЊ РїСѓРЅРєС‚ install РІРѕ
     // Я дебил &
+
 }
