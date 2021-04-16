@@ -147,10 +147,14 @@ public class Calculations
 
  }
 
-    public static void ConsoleVisual(Object EAFsource){
-
-
-
+    public static void ConsoleVisual(){
+        boolean gate;
+        char diff;
+        System.out.println("Укажите сложность проекта:\n1 - Распространённый\n2 - Полунезависимый\n3 - Встроенный");
+        while(gate = false){
+            if(diff!= "1"||"2"||"3")
+        }
+        System.in.read()
     }
 
 }
