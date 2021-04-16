@@ -19,7 +19,7 @@ public class Main /*extends Application*/ {
 
     public static void main(String[] args) {
         //launch(args);
-        Calculations.EAFsource();
+        Calculations.calc9();
         Calculations.ConsoleVisual();
     }
 }
