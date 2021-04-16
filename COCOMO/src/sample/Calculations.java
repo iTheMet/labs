@@ -1,5 +1,7 @@
 package sample;
 
+import java.util.Scanner;
+
 public class Calculations
 {
     //Basic cocomo
@@ -148,13 +150,20 @@ public class Calculations
  }
 
     public static void ConsoleVisual(){
-        boolean gate;
-        char diff;
+        boolean gate = false;
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Укажите сложность проекта:\n1 - Распространённый\n2 - Полунезависимый\n3 - Встроенный");
-        while(gate = false){
-            if(diff!= "1"||"2"||"3")
+        while(gate == false){
+            int diff = scanner.nextInt();
+            if(diff== (1|2|3)){
+                System.out.println("молодец");
+                gate = true;
+            }
+            else{
+                System.out.println("говно, переделывай!");
+            }
         }
-        System.in.read()
+
     }
 
 }
