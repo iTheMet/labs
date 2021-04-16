@@ -418,8 +418,9 @@ public class Calculations {
         gate = false;
 
         CDkStorage();
+        double EAF = 0;
         for (int i = 0; i < CDk.length; i++) {
-
+            gate = false;
            switch (i){
                 case (0): System.out.println("\nУкажите сложность проекта:\n1 - Распространённый\n2 - Полунезависимый\n3 - Встроенный");
                     break;
@@ -457,13 +458,47 @@ public class Calculations {
 
                 int  rate = scanner.nextInt();
                 if (rate >=1 && rate <=6) {
-                    if ((CDk[i][rate-1]==0)&&(CDk[i][rate])!=0){
+                    if(CDk[i][rate-1]!=0) {
+                        if (i == 0) {
+                            EAF = CDk[i][rate-1];
+                            System.out.println("Вы впервые обозначили переменную, она равна " + EAF);
+                        } else {
+                            EAF = EAF * CDk[i][rate-1];
+                            System.out.println("EAF = " + EAF);
+                        }
+                        gate = true;
+                    }
+                    else{
+                        if ((CDk[i][rate-1]==0)&&(CDk[i][rate])!=0) {
+                            if (i == 0) {
+                                EAF = CDk[i][rate];
+                                System.out.println("Вы впервые обозначили переменную, она равна " + EAF);
+                            } else {
+                                EAF = EAF * CDk[i][rate];
+                                System.out.println("EAF = " + EAF);
+                            }
+                            gate = true;
+                        }
+                        else {
+                            if ((CDk[i][rate-1]==0)&&(CDk[i][rate])==0&&(CDk[i][rate+1])!=0) {
+                                if (i == 0) {
+                                    EAF = CDk[i][rate+1];
+                                    System.out.println("Вы впервые обозначили переменную, она равна " + EAF);
+                                } else {
+                                    EAF = EAF * CDk[i][rate+1];
+                                    System.out.println("EAF = " + EAF);
+                                }
+                                gate = true;
+                            }
+                    }
 
                     //System.out.println("молодец");
-                    projectLevel = ;
-                    gate = true;
+
+
 
                     }
+                }else{
+                    System.out.println("говно, переделывай!");
                 }
             }
         }
