@@ -421,24 +421,25 @@ public class Calculations {
         double EAF = 0;
         for (int i = 0; i < CDk.length; i++) {
             gate = false;
+            System.out.println("_______________________\n###ИТЕРАЦИЯ №"+(i+1)+"###");
            switch (i){
-                case (0): System.out.println("\nУкажите сложность проекта:\n1 - Распространённый\n2 - Полунезависимый\n3 - Встроенный");
+                case (0): System.out.println("\nТребуемая надежность ПО:\n1 - Очень низкий\n2 - Низкий\n3 - Средний\n4 - Высокий\n5 - Очень высокий\n6 - Критический");
                     break;
-               case (1): System.out.println("Вы выбрали вариант ");
+               case (1): System.out.println("\nРазмер БД приложения:\n1 - Низкий\n2 - Средний\n3 - Высокий\n4 - Очень высокий");
                    break;
-               case (2): System.out.println("Вы выбрали вариант ");
+               case (2): System.out.println("Сложность продукта:\n1 - Очень низкий\n2 - Низкий\n3 - Средний\n4 - Высокий\n5 - Очень высокий\n6 - Критический");
                    break;
-               case (3): System.out.println("Вы выбрали вариант ");
+               case (3): System.out.println("Ограничения быстродействия при выполнении программы:\n1 - Средний\n2 - Высокий\n3 - Очень высокий\n4 - Критический");
                    break;
-               case (4): System.out.println("Вы выбрали вариант ");
+               case (4): System.out.println("Ограничения памяти:\n1 - Средний\n2 - Высокий\n3 - Очень высокий\n4 - Критический");
                    break;
-               case (5): System.out.println("Вы выбрали вариант ");
+               case (5): System.out.println("Неустойчивость окружения виртуальной машины:\n1 - Низкий\n2 - Средний\n3 - Высокий\n4 - Очень высокий");
                    break;
-               case (6): System.out.println("Вы выбрали вариант ");
+               case (6): System.out.println(":\n1 - Очень низкий\n2 - Низкий\n3 - Средний\n4 - Высокий\n5 - Очень высокий\n6 - Критический");
                    break;
-               case (7): System.out.println("Вы выбрали вариант ");
+               case (7): System.out.println(":\n1 - Очень низкий\n2 - Низкий\n3 - Средний\n4 - Высокий\n5 - Очень высокий\n6 - Критический");
                    break;
-               case (8): System.out.println("Вы выбрали вариант ");
+               case (8): System.out.println(":\n1 - Очень низкий\n2 - Низкий\n3 - Средний\n4 - Высокий\n5 - Очень высокий\n6 - Критический");
                    break;
                case (9): System.out.println("Вы выбрали вариант ");
                    break;
@@ -458,7 +459,12 @@ public class Calculations {
 
                 int  rate = scanner.nextInt();
                 if (rate >=1 && rate <=6) {
-                    if(CDk[i][rate-1]!=0) {
+                    System.out.println("rate "+rate);
+                    //if(CDk[i][0]==0)rate+=1;
+                    //if(CDk[i][1]==0)rate+=1;
+                    System.out.println("rate "+rate);
+                    if((CDk[i][rate-1]!=0)/*&&rate<6*/) {
+                        System.out.println("rate "+rate);
                         if (i == 0) {
                             EAF = CDk[i][rate-1];
                             System.out.println("Вы впервые обозначили переменную, она равна " + EAF);
@@ -468,7 +474,7 @@ public class Calculations {
                         }
                         gate = true;
                     }
-                    else{
+                    else{if((rate!=5)&&(rate!=6)){
                         if ((CDk[i][rate-1]==0)&&(CDk[i][rate])!=0) {
                             if (i == 0) {
                                 EAF = CDk[i][rate];
@@ -496,7 +502,7 @@ public class Calculations {
 
 
 
-                    }
+                    }System.out.println("говно, переделывай!");}
                 }else{
                     System.out.println("говно, переделывай!");
                 }
