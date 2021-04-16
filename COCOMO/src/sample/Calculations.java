@@ -17,7 +17,7 @@ public class Calculations
 
 
 
-    public static void calc9234()
+    public static void EAFsource()
     {
         CDk[0][0]=0.75 ;
         CDk[0][1]=0.88 ;
@@ -126,7 +126,7 @@ public class Calculations
    public static void calc9()
    {
 
-       calc9234();
+       EAFsource();
          for (int i = 0; i < CDk.length; i++)
          {
            System.out.println();
@@ -147,6 +147,10 @@ public class Calculations
 
  }
 
+    public static void ConsoleVisual(Object EAFsource){
 
+
+
+    }
 
 }
