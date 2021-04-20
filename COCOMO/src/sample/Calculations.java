@@ -27,9 +27,33 @@ public class Calculations {
 
     public static double[][] CDk = new double[15][6];
     public static double[][] SFj = new double[5][6];
+    public static double[] SFjChosen = new double[]{2.48,2.03,2.83,2.19,3.12,};
     public static double[][] EMj = new double[17][6];
     public static double[][] EMi = new double[7][7];
+    public static double[] EMiChosen = new double[]{1,1,1,1,1,1,1};
 
+public  static void SFjsum(){
+    double currentDouble=0;
+    for ( int i = 0 ;  i<SFjChosen.length;i++){
+        System.out.println(SFjChosen[i]);
+
+       // currentDouble = currentDouble+SFjChosen[i];
+
+    }
+
+
+
+
+
+}
+    public static double EmiProduct_of_numbers(){
+        for (int i=0;EMiChosen.length>i;i++){
+            double currentDouble =1*EMiChosen[i];
+            return currentDouble;
+
+        }
+        return 0;
+    }
 
     public static void SFjStorage() {
         SFj[0][0] = 6.20;

@@ -1,11 +1,15 @@
 package sample.controllers;
 
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.io.IOException;
+
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import  javafx.scene.control.MenuButton;
+import javafx.stage.Stage;
 import sample.Calculations;
 
 public class Controller1 {
@@ -96,10 +100,10 @@ public class Controller1 {
     private RadioButton Rbtn4;
 
     @FXML
-    private RadioButton Rbtn5;
+    private RadioButton Rbtn6;
 
     @FXML
-    private RadioButton Rbtn6;
+    private RadioButton Rbtn5;
 
     @FXML
     private MenuButton MenuType;
@@ -114,11 +118,40 @@ public class Controller1 {
     private Label Lbl111;
 
     @FXML
+    private Button SFjBtn;
+
+    @FXML
     void initialize() {
 
 
+
+
+        SFjBtn.setOnAction(Event ->{
+
+            SFjBtn.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/view/neTrojSuka.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage= new Stage();
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+
+        });
+
+
+
         Btn1.setOnAction(Event->{
-          Calculations.testEmi();
+            String currentString=Double.toString(Calculations.EmiProduct_of_numbers());
+
+            KekLbl1.setText(Double.toString(Calculations.EMiChosen[0])+"*"+Double.toString(Calculations.EMiChosen[1])+"*"+Double.toString(Calculations.EMiChosen[2])
+                    +"*"+Double.toString(Calculations.EMiChosen[3])+"*"+Double.toString(Calculations.EMiChosen[4])+"*"+
+                    Double.toString(Calculations.EMiChosen[5])+"*"+Double.toString(Calculations.EMiChosen[6])+"="+Double.toString(Calculations.EmiProduct_of_numbers()));
+
 
 
         });
@@ -223,10 +256,6 @@ public class Controller1 {
         Rbtn1.setOnAction(event ->{
             KekLbl1.setText("Suka");
           Calculations.EMiChosen[MenuIndicatorIndex] =  Double.parseDouble(indicator1.getText()) ;
-
-
-
-
         });
         Rbtn2.setOnAction(event ->{
             KekLbl1.setText("blyat");});
@@ -240,11 +269,9 @@ public class Controller1 {
             KekLbl1.setText("ebanniy");
             Calculations.EMiChosen[MenuIndicatorIndex] =  Double.parseDouble(indicator4.getText()) ;});
         Rbtn5.setOnAction(event ->{
-            KekLbl1.setText("govno");
-            Calculations.EMiChosen[MenuIndicatorIndex] =  Double.parseDouble(indicator5.getText()) ;});
+            KekLbl1.setText("govno");Calculations.EMiChosen[MenuIndicatorIndex] =  Double.parseDouble(indicator5.getText()) ;});
         Rbtn6.setOnAction(event ->{
-            KekLbl1.setText("jopa");
-            Calculations.EMiChosen[MenuIndicatorIndex] =  Double.parseDouble(indicator6.getText()) ;});
+            KekLbl1.setText("jopa");Calculations.EMiChosen[MenuIndicatorIndex] =  Double.parseDouble(indicator6.getText()) ;});
 
 
 
