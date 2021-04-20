@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.Controller1">
+   <children>
+      <Button fx:id="Btn1" layoutX="6.0" layoutY="368.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="Btn2" layoutX="533.0" layoutY="368.0" mnemonicParsing="false" text="Button" />
+      <Label fx:id="KekLbl1" layoutX="91.0" layoutY="152.0" prefHeight="124.0" prefWidth="462.0" text=" " textAlignment="CENTER">
+         <font>
+            <Font size="85.0" />
+         </font>
+      </Label>
+      <MenuButton fx:id="MenuTeam" layoutX="170.0" layoutY="18.0" mnemonicParsing="false" text="выберите">
+        <items>
+          <MenuItem fx:id="option1" mnemonicParsing="false" text="Распространенный" />
+          <MenuItem fx:id="option2" mnemonicParsing="false" text="Полунезависимый" />
+            <MenuItem fx:id="option3" mnemonicParsing="false" text="Встроенный" />
+        </items>
+      </MenuButton>
+      <Label fx:id="Lbl11" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="160.0" text="Тип команды :" textAlignment="CENTER">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <GridPane gridLinesVisible="true" layoutY="305.0" prefHeight="32.0" prefWidth="600.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="116.0" minWidth="10.0" prefWidth="116.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.0" minWidth="10.0" prefWidth="65.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="85.0" minWidth="10.0" prefWidth="65.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="65.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="65.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="65.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="65.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label fx:id="indicator1" prefHeight="45.0" prefWidth="108.0" text="1" GridPane.columnIndex="1">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="indicator2" prefHeight="87.0" prefWidth="81.0" text="1" GridPane.columnIndex="2">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="indicator3" prefHeight="89.0" prefWidth="295.0" text="1" GridPane.columnIndex="3">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="indicator4" prefHeight="145.0" prefWidth="367.0" text="1" GridPane.columnIndex="4">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="indicator6" prefHeight="86.0" prefWidth="175.0" text="1" GridPane.columnIndex="5">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="indicator6" prefHeight="143.0" prefWidth="205.0" text="1" textAlignment="CENTER" GridPane.columnIndex="6">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <MenuButton fx:id="MenuTeam1" mnemonicParsing="false" text="выберите">
+               <items>
+                  <MenuItem fx:id="option11" mnemonicParsing="false" text="Распространенный" />
+                  <MenuItem fx:id="option21" mnemonicParsing="false" text="Полунезависимый" />
+                  <MenuItem fx:id="option31" mnemonicParsing="false" text="Встроенный" />
+               </items>
+            </MenuButton>
+         </children>
+      </GridPane>
+      <RadioButton fx:id="Rbtn1" layoutX="147.0" layoutY="285.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="group1" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="Rbtn2" layoutX="230.0" layoutY="285.0" mnemonicParsing="false" toggleGroup="$group1" />
+      <RadioButton fx:id="Rbtn3" layoutX="314.0" layoutY="285.0" mnemonicParsing="false" toggleGroup="$group1" />
+      <RadioButton fx:id="Rbtn4" layoutX="386.0" layoutY="285.0" mnemonicParsing="false" toggleGroup="$group1" />
+      <RadioButton fx:id="Rbtn5" layoutX="551.0" layoutY="285.0" mnemonicParsing="false" toggleGroup="$group1" />
+      <RadioButton fx:id="Rbtn6" layoutX="468.0" layoutY="285.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="16.0" toggleGroup="$group1" />
+   </children>
+</AnchorPane>
