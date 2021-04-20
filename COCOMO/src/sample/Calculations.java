@@ -11,33 +11,25 @@ public class Calculations {
     public static double PM;
     public static double TM;
     public static double[][] BasicCocomo = new double[][]{{2.4, 1.05, 2.5, 0.38}, {3.0, 1.12, 2.5, 0.32}, {3.6, 1.20, 2.5, 0.32}};
+    public static double EAF;
 
     //intermidiant cocomo
     public static double[] common2 = new double[]{3.2, 1.05};
     public static double[] semi2 = new double[]{3.0, 1.12};
     public static double[] integrated2 = new double[]{2.8, 1.20};
-    public static String [] costDrivers = new String []{" Требуемая надежность ПО ", "Размер БД приложения","Сложность продукта","Сложность продукта"," Ограничения памяти","Неустойчивость окружения виртуальной машины",
-    "Требуемое время восстановления","Аналитические способности","Опыт разработки","Способности к разработке ПО",". Опыт использования виртуальных машин","Опыт разработки на языках программирования","Применение методов разработки ПО",
-    "Использование инструментария разработки ПО","Требования соблюдения графика разработки"};
-
-
+    public static String[] costDrivers = new String[]{" Требуемая надежность ПО ", "Размер БД приложения", "Сложность продукта", "Сложность продукта", " Ограничения памяти", "Неустойчивость окружения виртуальной машины",
+            "Требуемое время восстановления", "Аналитические способности", "Опыт разработки", "Способности к разработке ПО", ". Опыт использования виртуальных машин", "Опыт разработки на языках программирования", "Применение методов разработки ПО",
+            "Использование инструментария разработки ПО", "Требования соблюдения графика разработки"};
+    public static String[] costDrivers_SFj = new String[]{"PREC", "FLEX", "RESL", "TEAM", " PMAT"};
+    public static String[] costDrivers_Emi = new String[]{"PERS", "PREX", "RCPX", "RUSE", " PDIF", "FCIL", "SCED"};
+    public static String[] costDrivers_Emj = new String[]{"ACAP", "AEXP", "PCAP", "PCON", " PEXP", "LTEX", "RELY", "DATA",
+            "CPLX", "RUSE", "DOCU", "TIME", "STOR", "PVOL", "TOOL", "SITEE", "SCED"};
 
     public static double[][] CDk = new double[15][6];
     public static double[][] SFj = new double[5][6];
     public static double[][] EMj = new double[17][6];
     public static double[][] EMi = new double[7][7];
-    public static double[] EMiChosen = new double[]{1,1,1,1,1,1,1};
 
-public static void testEmi(){
-    for (int i = 0;i< EMiChosen.length;i++){
-        System.out.println(EMiChosen[i]);
-    }
-
-
-}
-    public static double[][] getEMi() {
-        return EMi;
-    }
 
     public static void SFjStorage() {
         SFj[0][0] = 6.20;
@@ -418,12 +410,12 @@ public static void testEmi(){
         int projectLevel = 0;
         boolean gate = false;
         Scanner scanner = new Scanner(System.in);
-       int[] currentArray = new int[CDk.length];
+        int[] currentArray = new int[CDk.length];
 
 
         System.out.println("\nУкажите сложность проекта:\n1 - Распространённый\n2 - Полунезависимый\n3 - Встроенный");
         while (gate == false) {
-             diff = scanner.nextInt();
+            diff = scanner.nextInt();
             if ((diff == 1) || (diff == 2) || (diff == 3)) {
                 //System.out.println("молодец");
                 projectLevel = diff--;
@@ -440,29 +432,27 @@ public static void testEmi(){
 
         for (int i = 0; i < CDk.length; i++) {
             System.out.println("\n Выберите важность атрибута Стоимости от 1 до 6");
-            System.out.println(costDrivers[i] );
-                     for (int j= 0;j<CDk[i].length;j++){
-                        double currentNum = CDk[i][j];
-                        String currentString = Double.toString(currentNum);
-                        if (currentNum==0.0){
-                            currentString="NULL";
-                        }
-                         System.out.print("|"+currentString+" |");
-                     }
-                     System.out.println(" ");
-                     gate = false;
-            while (gate == false){
-
-
-
-            currentArray[i]=scanner.nextInt();
-                    currentArray[i]=currentArray[i]-1;
-            if(   ( currentArray[i]>-1) && ( currentArray[i]<6) && (CDk[i][currentArray[i]]!=0)){
-            System.out.println("Вы выбрали "+CDk[i][currentArray[i]]);
-            gate =true;
+            System.out.println(costDrivers[i]);
+            for (int j = 0; j < CDk[i].length; j++) {
+                double currentNum = CDk[i][j];
+                String currentString = Double.toString(currentNum);
+                if (currentNum == 0.0) {
+                    currentString = "NULL";
+                }
+                System.out.print("|" + currentString + " |");
             }
-            else
-            System.out.println("Нельзя выбрать NULL или другой не существующий параметр");
+            System.out.println(" ");
+            gate = false;
+            while (gate == false) {
+
+
+                currentArray[i] = scanner.nextInt();
+                currentArray[i] = currentArray[i] - 1;
+                if ((currentArray[i] > -1) && (currentArray[i] < 6) && (CDk[i][currentArray[i]] != 0)) {
+                    System.out.println("Вы выбрали " + CDk[i][currentArray[i]]);
+                    gate = true;
+                } else
+                    System.out.println("Нельзя выбрать NULL или другой не существующий параметр");
 
             }
 
@@ -470,26 +460,24 @@ public static void testEmi(){
         }
         System.out.println("Вы выбрали все элементы ");
         double result = 1;
-        for (int i = 0; i < currentArray.length; i++){
-             result=result*CDk[i][currentArray[i]];
-           // System.out.println(result);
+        for (int i = 0; i < currentArray.length; i++) {
+            result = result * CDk[i][currentArray[i]];
+            // System.out.println(result);
         }
-        System.out.println("EAF Равна "+result);
+        System.out.println("EAF Равна " + result);
 
         System.out.println("Введите количество тысяч строк кода  ");
         double countKSLOC = scanner.nextDouble();
 
-        PM =result*BasicCocomo[diff][0]*Math.pow(countKSLOC,BasicCocomo[diff][1]);
+        PM = result * BasicCocomo[diff][0] * Math.pow(countKSLOC, BasicCocomo[diff][1]);
 
-        TM = (Math.pow(PM,BasicCocomo[diff][3]))*BasicCocomo[diff][2];
+        TM = (Math.pow(PM, BasicCocomo[diff][3])) * BasicCocomo[diff][2];
 
         System.out.println("PM-трудоемкость (чел.×мес.)\nTМ-время разработки в календарных месяцах");
-        System.out.println("PM Равна "+PM+" TM Равна "+ TM);
+        System.out.println("PM Равна " + PM + " TM Равна " + TM);
 
 
-
-
-        }
+    }
 
 
 
@@ -557,6 +545,225 @@ public static void testEmi(){
                     }
                 }
             }*/
+
+    public static void calc_SFj() {
+
+        SFjStorage();
+        for (int i = 0; i < SFj.length; i++) {
+            System.out.println();
+            for (int j = 0; j < SFj[0].length; j++) {
+                if (SFj[i][j] != 0) {
+                    System.out.print(SFj[i][j]);
+                    System.out.print('|');
+                } else {
+                    System.out.print("Null");
+                    System.out.print('|');
+                }
+            }
         }
+    }
+
+    public static void calc_EMj() {
+
+        EMjStorage();
+        for (int i = 0; i < EMj.length; i++) {
+            System.out.println();
+            for (int j = 0; j < EMj[0].length; j++) {
+                if (EMj[i][j] != 0) {
+                    System.out.print(EMj[i][j]);
+                    System.out.print('|');
+                } else {
+                    System.out.print("Null");
+                    System.out.print('|');
+                }
+            }
+        }
+    }
+
+    public static void calc_EMi() {
+
+        EMiStorage();
+        for (int i = 0; i < EMi.length; i++) {
+            System.out.println();
+            for (int j = 0; j < EMi[0].length; j++) {
+                if (EMi[i][j] != 0) {
+                    System.out.print(EMi[i][j]);
+                    System.out.print('|');
+                } else {
+                    System.out.print("Null");
+                    System.out.print('|');
+                }
+            }
+        }
+    }
+
+    public static void EM_Early_Design() {
+        boolean gate = false;
+        Scanner scanner = new Scanner(System.in);
+        int[] currentArray = new int[EMi.length];
+
+        EMiStorage();
+
+        for (int i = 0; i < EMi.length; i++) {
+            System.out.println("\n Выберите важность атрибута Стоимости от 1 до 7");
+            System.out.println(costDrivers_Emi[i]);
+            for (int j = 0; j < EMi[i].length; j++) {
+                double currentNum = EMi[i][j];
+                String currentString = Double.toString(currentNum);
+                if (currentNum == 0.0) {
+                    currentString = "NULL";
+                }
+                System.out.print("|" + currentString + " |");
+            }
+            System.out.println(" ");
+            gate = false;
+            while (gate == false) {
+
+
+                currentArray[i] = scanner.nextInt();
+                currentArray[i] = currentArray[i] - 1;
+                if ((currentArray[i] > -1) && (currentArray[i] < 6) && (EMi[i][currentArray[i]] != 0)) {
+                    System.out.println("Вы выбрали " + EMi[i][currentArray[i]]);
+                    gate = true;
+                } else
+                    System.out.println("Нельзя выбрать NULL или другой не существующий параметр");
+
+            }
+
+
+        }
+
+        System.out.println("Вы выбрали все элементы ");
+        EAF = 1;
+        for (int i = 0; i < currentArray.length; i++) {
+            EAF = EAF * EMi[i][currentArray[i]];
+          //  System.out.println(result);
+        }
+        System.out.println("EAF = " + EAF);
+    }
+
+    public static void EM_Post_Architecture() {
+        boolean gate = false;
+        Scanner scanner = new Scanner(System.in);
+        int[] currentArray = new int[EMj.length];
+
+        EMjStorage();
+
+        for (int i = 0; i < EMj.length; i++) {
+            System.out.println("\n Выберите важность атрибута Стоимости от 1 до 6");
+            System.out.println(costDrivers_Emj[i]);
+            for (int j = 0; j < EMj[i].length; j++) {
+                double currentNum = EMj[i][j];
+                String currentString = Double.toString(currentNum);
+                if (currentNum == 0.0) {
+                    currentString = "NULL";
+                }
+                System.out.print("|" + currentString + " |");
+            }
+            System.out.println(" ");
+            gate = false;
+            while (gate == false) {
+
+
+                currentArray[i] = scanner.nextInt();
+                currentArray[i] = currentArray[i] - 1;
+                if ((currentArray[i] > -1) && (currentArray[i] < 6) && (EMj[i][currentArray[i]] != 0)) {
+                    System.out.println("Вы выбрали " + EMj[i][currentArray[i]]);
+                    gate = true;
+                } else
+                    System.out.println("Нельзя выбрать NULL или другой не существующий параметр");
+
+            }
+
+
+        }
+
+        System.out.println("Вы выбрали все элементы ");
+        EAF = 1;
+        for (int i = 0; i < currentArray.length; i++) {
+            EAF = EAF * EMj[i][currentArray[i]];
+            System.out.println(EAF);
+        }
+        System.out.println("EAF = " + EAF);
+    }
+
+    public static void ConsoleVisual_COCOMOII() {
+        int projectLevel = 0;
+        boolean gate = false;
+        Scanner scanner = new Scanner(System.in);
+        int[] currentArray = new int[SFj.length];
+
+        System.out.println("\nУкажите стадию оценки проекта:\n1 - Предварительная оценка\n2 - Детальная оценка");
+        while (gate == false) {
+            diff = scanner.nextInt();
+            if ((diff == 1) || (diff == 2)) {
+                //System.out.println("молодец");
+                projectLevel = diff--;
+                gate = true;
+            } else {
+                System.out.println("говно, переделывай!");
+            }
+
+        }
+        System.out.println("Вы выбрали вариант " + projectLevel);
+        gate = false;
+
+
+        SFjStorage();
+
+        for (int i = 0; i < SFj.length; i++) {
+            System.out.println("\n Выберите важность атрибута Стоимости от 1 до 6");
+            System.out.println(costDrivers_SFj[i]);
+            for (int j = 0; j < SFj[i].length; j++) {
+                double currentNum = SFj[i][j];
+                String currentString = Double.toString(currentNum);
+                if (currentNum == 0.0) {
+                    currentString = "NULL";
+                }
+                System.out.print("|" + currentString + " |");
+            }
+            System.out.println(" ");
+            gate = false;
+            while (gate == false) {
+
+
+                currentArray[i] = scanner.nextInt();
+                currentArray[i] = currentArray[i] - 1;
+                if ((currentArray[i] > -1) && (currentArray[i] < 6) && (SFj[i][currentArray[i]] != 0)) {
+                    System.out.println("Вы выбрали " + SFj[i][currentArray[i]]);
+                    gate = true;
+                } else
+                    System.out.println("Нельзя выбрать NULL или другой не существующий параметр");
+
+            }
+
+
+        }
+
+        System.out.println("Вы выбрали все элементы ");
+        double result = 1;
+        for (int i = 0; i < currentArray.length; i++) {
+            result = result + SFj[i][currentArray[i]];
+             System.out.println(result);
+        }
+       double E = 0.91 + (0.01*result);
+        System.out.println("E = " + E);
+        System.out.println(projectLevel);
+
+        if ((projectLevel == 1) && (projectLevel > 0) && (projectLevel < 3)) {
+            EM_Early_Design();
+            double A = 2.94;
+        } else
+            EM_Post_Architecture();
+            double A = 2.45;
+
+            System.out.println(EAF);
+
+          //  PM = ;
+    }
+
+}
+
+
 
 
