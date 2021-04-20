@@ -62,7 +62,13 @@ public double Ef;
             public double Jeta1, Jeta2;
 
 
+    public static void Calc(){
 
+        System.
+
+
+
+    }
 
 
 
