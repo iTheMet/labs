@@ -12,6 +12,9 @@ public class Calculations {
     public static double TM;
     public static double[][] BasicCocomo = new double[][]{{2.4, 1.05, 2.5, 0.38}, {3.0, 1.12, 2.5, 0.32}, {3.6, 1.20, 2.5, 0.32}};
     public static double EAF;
+    public static double SCED;
+    public static double EAF0;
+    public static double A;
 
     //intermidiant cocomo
     public static double[] common2 = new double[]{3.2, 1.05};
@@ -199,6 +202,7 @@ public class Calculations {
          *       !!!!
          * !!!!!!!!!!!!!!!!!
          * !!!!!!!!!!!!!!!!!
+         * SCED
          */
         EMj[16][0] = 1.43;
         EMj[16][1] = 1.14;
@@ -259,7 +263,7 @@ public class Calculations {
         EMi[5][4] = 0.87;
         EMi[5][5] = 0.73;
         EMi[5][6] = 0.62;
-///////////////////////////////////
+///////////////////////////////////SCED
         // EMi[4][0]=0.49  ;
         EMi[6][1] = 1.43;
         EMi[6][2] = 1.14;
@@ -601,6 +605,7 @@ public class Calculations {
         boolean gate = false;
         Scanner scanner = new Scanner(System.in);
         int[] currentArray = new int[EMi.length];
+        A = 2.94;
 
         EMiStorage();
 
@@ -622,7 +627,7 @@ public class Calculations {
 
                 currentArray[i] = scanner.nextInt();
                 currentArray[i] = currentArray[i] - 1;
-                if ((currentArray[i] > -1) && (currentArray[i] < 6) && (EMi[i][currentArray[i]] != 0)) {
+                if ((currentArray[i] > -1) && (currentArray[i] < 7) && (EMi[i][currentArray[i]] != 0)) {
                     System.out.println("Вы выбрали " + EMi[i][currentArray[i]]);
                     gate = true;
                 } else
@@ -630,22 +635,29 @@ public class Calculations {
 
             }
 
-
         }
 
         System.out.println("Вы выбрали все элементы ");
         EAF = 1;
         for (int i = 0; i < currentArray.length; i++) {
             EAF = EAF * EMi[i][currentArray[i]];
+            if (i == 6){SCED = EMi[i][currentArray[i]];}
           //  System.out.println(result);
         }
+        EAF0 = 1;
+        for (int i = 0; i < currentArray.length - 1; i++) {
+            EAF0 = EAF0 * EMi[i][currentArray[i]];
+            //System.out.println("EAF0 = " + EAF0);
+        }
         System.out.println("EAF = " + EAF);
+        System.out.println("EAF0 = " + EAF0);
     }
 
     public static void EM_Post_Architecture() {
         boolean gate = false;
         Scanner scanner = new Scanner(System.in);
         int[] currentArray = new int[EMj.length];
+        A = 2.45;
 
         EMjStorage();
 
@@ -682,9 +694,16 @@ public class Calculations {
         EAF = 1;
         for (int i = 0; i < currentArray.length; i++) {
             EAF = EAF * EMj[i][currentArray[i]];
-            System.out.println(EAF);
+            if (i == 16){SCED = EMj[i][currentArray[i]];}
+           // System.out.println("EAF = " + EAF);
+        }
+        EAF0 = 1;
+        for (int i = 0; i < 16; i++) {
+            EAF0 = EAF0 * EMj[i][currentArray[i]];
+            //System.out.println("EAF0 = " + EAF0);
         }
         System.out.println("EAF = " + EAF);
+        System.out.println("EAF0 = " + EAF0);
     }
 
     public static void ConsoleVisual_COCOMOII() {
@@ -744,22 +763,29 @@ public class Calculations {
         double result = 1;
         for (int i = 0; i < currentArray.length; i++) {
             result = result + SFj[i][currentArray[i]];
-             System.out.println(result);
+           //  System.out.println(result);
         }
+       // System.out.println(result);
        double E = 0.91 + (0.01*result);
         System.out.println("E = " + E);
-        System.out.println(projectLevel);
+        //System.out.println(projectLevel);
 
         if ((projectLevel == 1) && (projectLevel > 0) && (projectLevel < 3)) {
             EM_Early_Design();
-            double A = 2.94;
+            System.out.println("A = " + A);
         } else
             EM_Post_Architecture();
-            double A = 2.45;
+            System.out.println("A = " + A);
 
-            System.out.println(EAF);
+        System.out.println("Введите количество тысяч строк кода  ");
+        double SIZE = scanner.nextDouble();
 
-          //  PM = ;
+            PM = EAF * A * Math.pow(SIZE, E);
+            System.out.println("PM = " + PM);
+
+            TM = SCED * 3.67 * Math.pow(EAF0 * A * Math.pow(SIZE, E), 0.28 + 0.2 * (E - 0.91));
+            System.out.println("TM = " + TM);
+
     }
 
 }

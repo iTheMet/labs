@@ -10,7 +10,7 @@ import sample.Calculations;
 
 public class Controller1 {
 
-    private static int teamID;
+   /* private static int teamID;
     private static int typeID;
     private static int MenuIndicatorIndex;
 
@@ -249,7 +249,7 @@ public class Controller1 {
 
 
 
-    }
+    }*/
 }
 
 

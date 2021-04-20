@@ -6,9 +6,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+public class Main/* extends Application*/ {
 
-    @Override
+   /* @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("view/sample.fxml"));
 
@@ -18,13 +18,13 @@ public class Main extends Application {
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(scene);
         primaryStage.show();
-    }
+    }*/
 
 
     public static void main(String[] args) {
-        Calculations.EMiStorage();
+        Calculations.ConsoleVisual_COCOMOII();
 
 
-        launch(args);
+      // launch(args);
     }
 }
