@@ -474,6 +474,10 @@ public class Calculations {
 
         System.out.println("PM-трудоемкость (чел.×мес.)\nTМ-время разработки в календарных месяцах");
         System.out.println("PM Равна "+PM+" TM Равна "+ TM);
+
+
+
+
         }
 
 
