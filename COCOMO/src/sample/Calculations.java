@@ -7,12 +7,19 @@ public class Calculations {
     /*public static double[] common = new double[] {2.4,1.05,2.5,0.38};
     public static double[] semi = new double[] {3.0,1.12,2.5,0.32};
     public static double[] integrated = new double[] {3.6,1.20,2.5,0.32};*/
+    public static int diff;
+    public static double PM;
+    public static double TM;
     public static double[][] BasicCocomo = new double[][]{{2.4, 1.05, 2.5, 0.38}, {3.0, 1.12, 2.5, 0.32}, {3.6, 1.20, 2.5, 0.32}};
 
     //intermidiant cocomo
     public static double[] common2 = new double[]{3.2, 1.05};
     public static double[] semi2 = new double[]{3.0, 1.12};
     public static double[] integrated2 = new double[]{2.8, 1.20};
+    public static String [] costDrivers = new String []{" Требуемая надежность ПО ", "Размер БД приложения","Сложность продукта","Сложность продукта"," Ограничения памяти","Неустойчивость окружения виртуальной машины",
+    "Требуемое время восстановления","Аналитические способности","Опыт разработки","Способности к разработке ПО",". Опыт использования виртуальных машин","Опыт разработки на языках программирования","Применение методов разработки ПО",
+    "Использование инструментария разработки ПО","Требования соблюдения графика разработки"};
+
 
 
     public static double[][] CDk = new double[15][6];
@@ -396,15 +403,16 @@ public class Calculations {
 
     }
 
-    public static void ConsoleVisual() {
+    public static void ConsoleVisual_basicCOCOMO() {
         int projectLevel = 0;
         boolean gate = false;
         Scanner scanner = new Scanner(System.in);
+       int[] currentArray = new int[CDk.length];
 
 
         System.out.println("\nУкажите сложность проекта:\n1 - Распространённый\n2 - Полунезависимый\n3 - Встроенный");
         while (gate == false) {
-            int diff = scanner.nextInt();
+             diff = scanner.nextInt();
             if ((diff == 1) || (diff == 2) || (diff == 3)) {
                 //System.out.println("молодец");
                 projectLevel = diff--;
@@ -418,28 +426,94 @@ public class Calculations {
         gate = false;
 
         CDkStorage();
-        double EAF = 0;
+
         for (int i = 0; i < CDk.length; i++) {
-            gate = false;
-            System.out.println("_______________________\n###ИТЕРАЦИЯ №"+(i+1)+"###");
+            System.out.println("\n Выберите важность атрибута Стоимости от 1 до 6");
+            System.out.println(costDrivers[i] );
+                     for (int j= 0;j<CDk[i].length;j++){
+                        double currentNum = CDk[i][j];
+                        String currentString = Double.toString(currentNum);
+                        if (currentNum==0.0){
+                            currentString="NULL";
+                        }
+                         System.out.print("|"+currentString+" |");
+                     }
+                     System.out.println(" ");
+                     gate = false;
+            while (gate == false){
+
+
+
+            currentArray[i]=scanner.nextInt();
+                    currentArray[i]=currentArray[i]-1;
+            if(   ( currentArray[i]>-1) && ( currentArray[i]<6) && (CDk[i][currentArray[i]]!=0)){
+            System.out.println("Вы выбрали "+CDk[i][currentArray[i]]);
+            gate =true;
+            }
+            else
+            System.out.println("Нельзя выбрать NULL или другой не существующий параметр");
+
+            }
+
+
+        }
+        System.out.println("Вы выбрали все элементы ");
+        double result = 1;
+        for (int i = 0; i < currentArray.length; i++){
+             result=result*CDk[i][currentArray[i]];
+           // System.out.println(result);
+        }
+        System.out.println("EAF Равна "+result);
+
+        System.out.println("Введите количество тысяч строк кода  ");
+        double countKSLOC = scanner.nextDouble();
+
+        PM =result*BasicCocomo[diff][0]*Math.pow(countKSLOC,BasicCocomo[diff][1]);
+
+        TM = (Math.pow(PM,BasicCocomo[diff][3]))*BasicCocomo[diff][2];
+
+        System.out.println("PM-трудоемкость (чел.×мес.)\nTМ-время разработки в календарных месяцах");
+        System.out.println("PM Равна "+PM+" TM Равна "+ TM);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       /* for (int i = 0; i < CDk.length; i++) {
+
            switch (i){
-                case (0): System.out.println("\nТребуемая надежность ПО:\n1 - Очень низкий\n2 - Низкий\n3 - Средний\n4 - Высокий\n5 - Очень высокий\n6 - Критический");
+                case (0): System.out.println("\nУкажите сложность проекта:\n1 - Распространённый\n2 - Полунезависимый\n3 - Встроенный");
                     break;
-               case (1): System.out.println("\nРазмер БД приложения:\n1 - Низкий\n2 - Средний\n3 - Высокий\n4 - Очень высокий");
+               case (1): System.out.println("Вы выбрали вариант ");
                    break;
-               case (2): System.out.println("Сложность продукта:\n1 - Очень низкий\n2 - Низкий\n3 - Средний\n4 - Высокий\n5 - Очень высокий\n6 - Критический");
+               case (2): System.out.println("Вы выбрали вариант ");
                    break;
-               case (3): System.out.println("Ограничения быстродействия при выполнении программы:\n1 - Средний\n2 - Высокий\n3 - Очень высокий\n4 - Критический");
+               case (3): System.out.println("Вы выбрали вариант ");
                    break;
-               case (4): System.out.println("Ограничения памяти:\n1 - Средний\n2 - Высокий\n3 - Очень высокий\n4 - Критический");
+               case (4): System.out.println("Вы выбрали вариант ");
                    break;
-               case (5): System.out.println("Неустойчивость окружения виртуальной машины:\n1 - Низкий\n2 - Средний\n3 - Высокий\n4 - Очень высокий");
+               case (5): System.out.println("Вы выбрали вариант ");
                    break;
-               case (6): System.out.println(":\n1 - Очень низкий\n2 - Низкий\n3 - Средний\n4 - Высокий\n5 - Очень высокий\n6 - Критический");
+               case (6): System.out.println("Вы выбрали вариант ");
                    break;
-               case (7): System.out.println(":\n1 - Очень низкий\n2 - Низкий\n3 - Средний\n4 - Высокий\n5 - Очень высокий\n6 - Критический");
+               case (7): System.out.println("Вы выбрали вариант ");
                    break;
-               case (8): System.out.println(":\n1 - Очень низкий\n2 - Низкий\n3 - Средний\n4 - Высокий\n5 - Очень высокий\n6 - Критический");
+               case (8): System.out.println("Вы выбрали вариант ");
                    break;
                case (9): System.out.println("Вы выбрали вариант ");
                    break;
@@ -453,61 +527,21 @@ public class Calculations {
                    break;
                case (14): System.out.println("Вы выбрали вариант ");
                    break;
-            }
+            }*/
 
-            while (gate == false) {
+           /* while (gate == false) {
 
                 int  rate = scanner.nextInt();
                 if (rate >=1 && rate <=6) {
-                    System.out.println("rate "+rate);
-                    //if(CDk[i][0]==0)rate+=1;
-                    //if(CDk[i][1]==0)rate+=1;
-                    System.out.println("rate "+rate);
-                    if((CDk[i][rate-1]!=0)/*&&rate<6*/) {
-                        System.out.println("rate "+rate);
-                        if (i == 0) {
-                            EAF = CDk[i][rate-1];
-                            System.out.println("Вы впервые обозначили переменную, она равна " + EAF);
-                        } else {
-                            EAF = EAF * CDk[i][rate-1];
-                            System.out.println("EAF = " + EAF);
-                        }
-                        gate = true;
-                    }
-                    else{if((rate!=5)&&(rate!=6)){
-                        if ((CDk[i][rate-1]==0)&&(CDk[i][rate])!=0) {
-                            if (i == 0) {
-                                EAF = CDk[i][rate];
-                                System.out.println("Вы впервые обозначили переменную, она равна " + EAF);
-                            } else {
-                                EAF = EAF * CDk[i][rate];
-                                System.out.println("EAF = " + EAF);
-                            }
-                            gate = true;
-                        }
-                        else {
-                            if ((CDk[i][rate-1]==0)&&(CDk[i][rate])==0&&(CDk[i][rate+1])!=0) {
-                                if (i == 0) {
-                                    EAF = CDk[i][rate+1];
-                                    System.out.println("Вы впервые обозначили переменную, она равна " + EAF);
-                                } else {
-                                    EAF = EAF * CDk[i][rate+1];
-                                    System.out.println("EAF = " + EAF);
-                                }
-                                gate = true;
-                            }
-                    }
+                    if ((CDk[i][rate-1]==0)&&(CDk[i][rate])!=0){
 
                     //System.out.println("молодец");
+                    projectLevel = ;
+                    gate = true;
 
-
-
-                    }System.out.println("говно, переделывай!");}
-                }else{
-                    System.out.println("говно, переделывай!");
+                    }
                 }
-            }
+            }*/
         }
 
-    }
-}
+

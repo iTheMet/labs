@@ -20,6 +20,6 @@ public class Main /*extends Application*/ {
     public static void main(String[] args) {
         //launch(args);
         Calculations.calc9();
-        Calculations.ConsoleVisual();
+        Calculations.ConsoleVisual_basicCOCOMO();
     }
 }
