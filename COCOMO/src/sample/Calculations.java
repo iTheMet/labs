@@ -26,7 +26,18 @@ public class Calculations {
     public static double[][] SFj = new double[5][6];
     public static double[][] EMj = new double[17][6];
     public static double[][] EMi = new double[7][7];
+    public static double[] EMiChosen = new double[]{1,1,1,1,1,1,1};
 
+public static void testEmi(){
+    for (int i = 0;i< EMiChosen.length;i++){
+        System.out.println(EMiChosen[i]);
+    }
+
+
+}
+    public static double[][] getEMi() {
+        return EMi;
+    }
 
     public static void SFjStorage() {
         SFj[0][0] = 6.20;
