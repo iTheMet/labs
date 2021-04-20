@@ -67,7 +67,7 @@
                   <Font size="25.0" />
                </font>
             </Label>
-            <Label fx:id="indicator6" prefHeight="86.0" prefWidth="175.0" text="1" GridPane.columnIndex="5">
+            <Label fx:id="indicator5" prefHeight="86.0" prefWidth="175.0" text="1" GridPane.columnIndex="5">
                <font>
                   <Font size="25.0" />
                </font>
@@ -77,11 +77,15 @@
                   <Font size="25.0" />
                </font>
             </Label>
-            <MenuButton fx:id="MenuTeam1" mnemonicParsing="false" text="выберите">
+            <MenuButton fx:id="MenuIndicator" mnemonicParsing="false" text="выберите">
                <items>
-                  <MenuItem fx:id="option11" mnemonicParsing="false" text="Распространенный" />
-                  <MenuItem fx:id="option21" mnemonicParsing="false" text="Полунезависимый" />
-                  <MenuItem fx:id="option31" mnemonicParsing="false" text="Встроенный" />
+                  <MenuItem fx:id="PERS" mnemonicParsing="false" text="PERS " />
+                  <MenuItem fx:id="PREX" mnemonicParsing="false" text="PREX" />
+                  <MenuItem fx:id="RCPX" mnemonicParsing="false" text="RCPX" />
+                  <MenuItem fx:id="RUSE" mnemonicParsing="false" text="RUSE" />
+                  <MenuItem fx:id="PDIF" mnemonicParsing="false" text="PDIF" />
+                  <MenuItem fx:id="FCIL" mnemonicParsing="false" text="FCIL" />
+                  <MenuItem fx:id="SCED" mnemonicParsing="false" text="SCED" />
                </items>
             </MenuButton>
          </children>
@@ -94,7 +98,18 @@
       <RadioButton fx:id="Rbtn2" layoutX="230.0" layoutY="285.0" mnemonicParsing="false" toggleGroup="$group1" />
       <RadioButton fx:id="Rbtn3" layoutX="314.0" layoutY="285.0" mnemonicParsing="false" toggleGroup="$group1" />
       <RadioButton fx:id="Rbtn4" layoutX="386.0" layoutY="285.0" mnemonicParsing="false" toggleGroup="$group1" />
-      <RadioButton fx:id="Rbtn5" layoutX="551.0" layoutY="285.0" mnemonicParsing="false" toggleGroup="$group1" />
-      <RadioButton fx:id="Rbtn6" layoutX="468.0" layoutY="285.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="16.0" toggleGroup="$group1" />
+      <RadioButton fx:id="Rbtn6" layoutX="551.0" layoutY="285.0" mnemonicParsing="false" toggleGroup="$group1" />
+      <RadioButton fx:id="Rbtn5" layoutX="468.0" layoutY="285.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="16.0" toggleGroup="$group1" />
+      <MenuButton fx:id="MenuType" layoutX="170.0" layoutY="63.0" mnemonicParsing="false" text="выберите">
+         <items>
+            <MenuItem fx:id="type1" mnemonicParsing="false" text="Распространенный" />
+            <MenuItem fx:id="type2" mnemonicParsing="false" text="Полунезависимый" />
+         </items>
+      </MenuButton>
+      <Label fx:id="Lbl111" layoutX="22.0" layoutY="60.0" prefHeight="25.0" prefWidth="160.0" text="Тип проекта :" textAlignment="CENTER">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
